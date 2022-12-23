@@ -26,13 +26,11 @@ h1 {
     border-radius: 15px;
 }
 
-.item:hover:not(:first-child) {
+.item:hover:last-child {
     background-color: gray;
     border-color: rgb(161, 55, 55);
 }
-.item:active{
-    transform: translateY(5px);
-}
+
 .social-logo {
     max-width: 230px;
 }
@@ -87,5 +85,4 @@ footer {
 
 a {
     text-decoration: none;
-    gap: 5px;
 }
