@@ -1,5 +1,6 @@
 body {
     background-color: rgb(15, 13, 20);
+    color: whitesmoke;
 }
 
 h1,
@@ -88,4 +89,9 @@ footer {
 a {
     text-decoration: none;
     gap: 5px;
+}
+
+#backButton{
+    display: inline-block;
+    margin: auto;
 }
