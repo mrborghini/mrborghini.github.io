@@ -83,4 +83,9 @@ input:focus {
     width: 100px;
     background-color: red;
     border-radius: 50%;
+    margin: 10px;
+}
+#dotpos{
+    display: flex;
+    justify-content: center;
 }
