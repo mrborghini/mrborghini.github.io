@@ -36,7 +36,12 @@ button:active {
     transform: translateY(10px);
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     text-align: center;
 }
 
@@ -55,6 +60,7 @@ label {
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 input {
