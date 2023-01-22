@@ -47,6 +47,11 @@ h6 {
     text-align: center;
 }
 
+#time{
+    background-color: #272727;
+    padding: 1px;
+}
+
 #TopHeading {
     display: flex;
     flex-direction: column;
