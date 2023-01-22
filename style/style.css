@@ -54,14 +54,13 @@ h6 {
     align-items: center;
 }
 
-#JSCode {
-    width: 50%;
-    border-radius: 4%;
-
-}
-
 #JSCode:active {
     transform: translateY(3%);
+}
+
+#JSCode-img{
+    width: 100%;
+    border-radius: 2%;
 }
 
 #InfoSite {
