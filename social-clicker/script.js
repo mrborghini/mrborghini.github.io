@@ -20,7 +20,7 @@ function checkAir() {
             throw document.getElementById('status').innerHTML = "WRONG THE BALL IS ALREADY IN THE AIR - 10000000 Social credits";
         }
         console.log("Variable is groter dan 1");
-        document.getElementById('status').innerHTML = "De bal is in de Lucht.";
+        document.getElementById('status').innerHTML = "The ball is in the air";
     } catch (error) {
         socialCredit -= 10000000;
         alert("CIA wants to know your location");
