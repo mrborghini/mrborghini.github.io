@@ -18,5 +18,5 @@ function overworld() {
     check();
 }
 function check() {
-    output.innerHTML = "X" + answer[0] + " Y" + inputY.value + " Z" + answer[1];
+    output.innerHTML = answer[0] + " " + inputY.value + " " + answer[1];
 }
