@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist</title>
+</head>
+
+<body>
+    <main>
+        
+        <select onchange="filter.getFilter()" name="filter" id="filter">
+            <option value="0">All</option>
+            <option value="1">Done</option>
+            <option value="2">To Do</option>
+        </select>
+
+        <input placeholder="Add task" type="text" name="inputTodo" id="inputTodo">
+        <button onclick="todo.addToDo()">+</button>
+        <button onclick="todo.removeAllTodos()">Delete all</button>
+
+
+    </main>
+    <script src="script/classes/Logger.class.js"></script>
+    <script src="script/classes/Filter.class.js"></script>
+    <script src="script/classes/InputValidation.class.js"></script>
+    <script src="script/classes/ToDo.class.js"></script>
+    <script src="script/index.js"></script>
+</body>
+
+</html>
