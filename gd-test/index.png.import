@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2xnda3uglodw"
-path="res://.godot/imported/ball-sim.apple-touch-icon.png-a7b464614ba4083ddffc68ed54f51cdb.ctex"
+uid="uid://vysl3bad25se"
+path="res://.godot/imported/index.png-9c61bad5332439ec07a7e5ff29f99eb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Build/Web/ball-sim.apple-touch-icon.png"
-dest_files=["res://.godot/imported/ball-sim.apple-touch-icon.png-a7b464614ba4083ddffc68ed54f51cdb.ctex"]
+source_file="res://Build/Web/index.png"
+dest_files=["res://.godot/imported/index.png-9c61bad5332439ec07a7e5ff29f99eb3.ctex"]
 
 [params]
 
