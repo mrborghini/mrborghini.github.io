@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Game for Arianna</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-pink-100 flex flex-col items-center p-4">
+  <h1 class="text-4xl font-bold text-pink-700 mb-4">Happy Birthday, Baby ❤️</h1>
+  <p class="text-lg text-gray-700 mb-6">Guess the word before the cute dog disappears!</p>
+
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center">
+    <div class="flex justify-center mb-4">
+      <canvas id="dogCanvas" width="220" height="220" class="w-full max-w-[220px]"></canvas>
+    </div>
+
+    <div id="guessedWord" class="text-2xl tracking-widest font-mono mb-6"></div>
+
+    <div id="keyboard" class="grid grid-cols-7 gap-2 w-full"></div>
+
+    <button id="restartBtn" class="mt-6 px-4 py-2 rounded-xl bg-pink-600 text-white font-semibold hover:bg-pink-700">Restart</button>
+  </div>
+
+  <script>
+    const words = [
+      "ARIANNA",
+      "CUPCAKE",
+      "SUNSHINE",
+      "PRETTY",
+      "KITTEN",
+      "HEART",
+      "HAPPY BIRTHDAY",
+      "SCHATJE",
+      "I LOVE YOU",
+      "BABY GIRL",
+      "LOVE YOU",
+      "SMILEY FACE",
+      "FOREVER",
+      "ADORABLE",
+      "SNUGGLES",
+      "HUGS",
+      "CUTIE",
+      "DARLING",
+      "MY LOVE",
+      "TREASURE",
+      "PRINCESS",
+      "SWEETHEART",
+      "ANGEL",
+      "SUNSHINE GIRL"
+    ];
+
+    let chosenWord = words[Math.floor(Math.random() * words.length)];
+    // Only convert non-space characters to '_', spaces remain as is
+    let guessed = Array.from(chosenWord, ch => ch === ' ' ? ' ' : '_');
+    let wrong = 0;
+
+    const canvas = document.getElementById("dogCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function drawDog(step) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const parts = [
+        () => { ctx.beginPath(); ctx.arc(110, 70, 35, 0, Math.PI * 2); ctx.fillStyle = "#d4a373"; ctx.fill(); },
+        () => { ctx.beginPath(); ctx.arc(90, 50, 18, 0, Math.PI * 2); ctx.fillStyle = "#c98b5b"; ctx.fill(); },
+        () => { ctx.beginPath(); ctx.arc(130, 50, 18, 0, Math.PI * 2); ctx.fillStyle = "#c98b5b"; ctx.fill(); },
+        () => { ctx.beginPath(); ctx.arc(110, 80, 10, 0, Math.PI * 2); ctx.fillStyle = "black"; ctx.fill(); },
+        () => { ctx.beginPath(); ctx.arc(95, 70, 6, 0, Math.PI * 2); ctx.fillStyle = "black"; ctx.fill(); },
+        () => { ctx.beginPath(); ctx.arc(125, 70, 6, 0, Math.PI * 2); ctx.fillStyle = "black"; ctx.fill(); },
+        () => { ctx.beginPath(); ctx.fillStyle = "#d4a373"; ctx.fillRect(85, 105, 50, 60); },
+        () => { ctx.beginPath(); ctx.fillStyle = "#d4a373"; ctx.fillRect(85, 165, 15, 40); },
+        () => { ctx.beginPath(); ctx.fillStyle = "#d4a373"; ctx.fillRect(120, 165, 15, 40); },
+        () => { ctx.beginPath(); ctx.moveTo(135, 120); ctx.quadraticCurveTo(160, 110, 150, 140); ctx.strokeStyle = "#d4a373"; ctx.lineWidth = 10; ctx.stroke(); },
+      ];
+
+      for (let i = 0; i < 10 - step; i++) {
+        parts[i]();
+      }
+    }
+
+    function updateWord() {
+      document.getElementById("guessedWord").textContent = guessed.join("");
+    }
+
+    function buildKeyboard() {
+      const kb = document.getElementById("keyboard");
+      kb.innerHTML = "";
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(letter => {
+        const btn = document.createElement("button");
+        btn.textContent = letter;
+        btn.className = "px-2 py-2 text-sm bg-pink-200 rounded-lg hover:bg-pink-300 font-semibold";
+        btn.onclick = () => guess(letter, btn);
+        kb.appendChild(btn);
+      });
+    }
+
+    function guess(letter, btn) {
+      btn.disabled = true;
+      btn.classList.add("opacity-50");
+
+      if (chosenWord.includes(letter)) {
+        [...chosenWord].forEach((L, i) => {
+          if (L === letter) guessed[i] = letter;
+        });
+      } else {
+        wrong++;
+      }
+
+      drawDog(wrong);
+      updateWord();
+
+      if (guessed.join("") === chosenWord) alert("You saved the dog, baby! ❤️");
+      if (wrong >= 10) alert("Oh no, the dog disappeared! 😭");
+    }
+
+    document.getElementById("restartBtn").onclick = () => location.reload();
+
+    drawDog(0);
+    updateWord();
+    buildKeyboard();
+  </script>
+</body>
+</html>
